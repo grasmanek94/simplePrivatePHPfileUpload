@@ -79,8 +79,8 @@ function onready() {
 		xhr.send(fd);
 		
 		// Present file info and append it to the list of files
-		fileInfo = "<div><strong>Name:</strong> " + file.name + "</div>";
-		fileInfo += "<div><strong>Size:</strong> " + parseInt(file.size / 1024, 10) + " kb</div>";
+		fileInfo = "<div><strong>" + file.name;
+		fileInfo += " (" + parseInt(file.size / 1024, 10) + " KB)</strong></div>";
 		div.innerHTML = fileInfo;
 		
 		fileList.appendChild(li);
