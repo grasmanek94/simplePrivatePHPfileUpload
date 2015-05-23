@@ -1,0 +1,11 @@
+Order deny,allow
+Allow from all
+
+DirectoryIndex index.php
+
+# Turn On ReWrite Engine
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule (.*) dl.php?$1 [NC,L]
