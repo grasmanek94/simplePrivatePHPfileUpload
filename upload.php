@@ -58,7 +58,7 @@
 		{
 			if($_FILES['files-upload']['error'] == 0)
 			{
-				if($_FILES['files-upload']['size'] > 1 && $_FILES['files-upload']['size'] < (64*1024*1024))
+				if($_FILES['files-upload']['size'] >= 1 && $_FILES['files-upload']['size'] < (64*1024*1024))
 				{
 					$id = generate_id();
 					if(mkdir("./.uploads/" . $id))
