@@ -1,7 +1,8 @@
 function onready() {
   var filesUpload = document.getElementById("files-upload"),
 		dropArea = document.getElementById("drop"),
-		fileList = document.getElementById("file-list");
+		fileList = document.getElementById("file-list"),
+		links = document.getElementById("alllinks");
 		
 	function uploadFile (file) {
 		var li = document.createElement("li"),
@@ -46,7 +47,9 @@ function onready() {
 		{
 			progressBarContainer.className += " uploaded";
 			progressBar.innerHTML = xhr.responseText;
-			
+			var href = xhr.responseText.match(/href="([^"]*)/)[1];		
+			links.innerHTML += href + "\r\n";
+			links.scrollTop = links.scrollHeight;
 		}, false);
 
 		xhr.open("POST", "/upload.php", true);
