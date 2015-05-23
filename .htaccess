@@ -1,6 +1,8 @@
 Order deny,allow
 Allow from all
 
+RedirectMatch 403 ^.*/\.uploads/.*
+
 DirectoryIndex index.php
 
 # Turn On ReWrite Engine
