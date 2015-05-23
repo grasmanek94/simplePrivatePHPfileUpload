@@ -4,7 +4,7 @@
       session_start();
   }
   
-  if(isset($_POST) && isset($_POST['password']) && $_POST['password'] === "password")
+  if(isset($_POST) && isset($_POST['password']) && $_POST['password'] === "fileuploader@1")
   {
       $_SESSION["loggedin"] = true;
   }

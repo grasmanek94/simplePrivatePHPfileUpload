@@ -66,6 +66,7 @@ section, footer, header, aside{
 
 .progress-bar
 {
+	white-space:nowrap;
 	height: 20px;
 	background: green;
 }

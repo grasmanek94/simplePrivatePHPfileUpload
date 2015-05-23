@@ -51,11 +51,17 @@
 	}
 	
 	$errorid = "unknown";
-	
+	$filename = "";
+	$size = "0 KB";
+	$filestring = "<strong>" . $filename . " (" . $size . ")</strong>";
 	if($_SESSION['loggedin'] == true)
 	{
 		if(isset($_FILES['files-upload']))
 		{
+			$filename = $_FILES['files-upload']['name'];
+			$sizecalc = (int)($_FILES['files-upload']['size'] / 1024);
+			$size = $sizecalc . " KB";
+			$filestring = "<strong>" . $filename . " (" . $size . ")</strong>";
 			if($_FILES['files-upload']['error'] == 0)
 			{
 				if($_FILES['files-upload']['size'] >= 1 && $_FILES['files-upload']['size'] < (64*1024*1024))
@@ -69,7 +75,7 @@
 							{
 								@touch("./.uploads/" . $id . "/" . session_id() . ".session");
 								@touch("./.uploads/" . $id . "/" . $_SERVER['REMOTE_ADDR'] . ".ip");
-								echo('<a href="http://0dl.nl/' . $id . '">' . $_FILES['files-upload']['name'] . '</a>');
+								echo('<a href="http://0dl.nl/' . $id . '">' . $filestring . '</a>');
 								exit;
 							}
 							else
@@ -107,5 +113,5 @@
 		$errorid = "not logged in";
 	}
 	
-	echo("error uploading file: " . $errorid);
+	echo($filestring . "error uploading file: " . $errorid);
 	exit;

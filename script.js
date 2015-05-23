@@ -20,38 +20,23 @@ function onready() {
 		progressBarContainer.appendChild(progressBar);
 		li.appendChild(progressBarContainer);
 		
-		/*
-			If the file is an image and the web browser supports FileReader,
-			present a preview in the file list
-		*/
-		if (typeof FileReader !== "undefined" && (/image/i).test(file.type)) {
-			img = document.createElement("img");
-			li.appendChild(img);
-			reader = new FileReader();
-			reader.onload = (function (theImg) {
-				return function (evt) {
-					theImg.src = evt.target.result;
-				};
-			}(img));
-			reader.readAsDataURL(file);
-		}
-		
 		// Uploading - for Firefox, Google Chrome and Safari
 		xhr = new XMLHttpRequest();
+	
+		
+		// Present file info and append it to the list of files
+		fileInfo = "<strong>" + file.name + " (" + parseInt(file.size / 1024, 10) + " KB)</strong>";
+		progressBar.innerHTML = fileInfo;
+		progressBar.style.width = "0%";
 		
 		// Update progress bar
 		xhr.upload.addEventListener("progress", function (evt) {
-			if (evt.lengthComputable) {
-				//if(evt.loaded != evt.total)
-				//{
-					progressBar.style.width = (evt.loaded / evt.total) * 100 + "%";
-				//}
-				//else
-				//{
-				//	progressBar.style.width = "0%";
-				//}
+			if (evt.lengthComputable) 
+			{
+				progressBar.style.width = (evt.loaded / evt.total) * 100 + "%";
 			}
-			else {
+			else 
+			{
 				// No data to calculate on
 			}
 		}, false);
@@ -77,11 +62,6 @@ function onready() {
 
 		// Send the file (doh)
 		xhr.send(fd);
-		
-		// Present file info and append it to the list of files
-		fileInfo = "<div><strong>" + file.name;
-		fileInfo += " (" + parseInt(file.size / 1024, 10) + " KB)</strong></div>";
-		div.innerHTML = fileInfo;
 		
 		fileList.appendChild(li);
 	}
