@@ -7,10 +7,10 @@
         {
             if($entry != '.' && $entry != '..' && is_file($basedirectory . $entry))//Skips over . and .. and directories
             { 
-                header("Content-Type: application/force-download");
-                header('Content-Disposition: attachment; filename="'.$entry.'"');
+                header('Content-Type: '.mime_content_type($basedirectory . $entry));
+                header('Content-Disposition: inline; filename="'.$entry.'"');
                 readfile($basedirectory . $entry);            
-                break; //Exit the loop so no more files are read
+                exit();
             }
         }
     }
