@@ -74,7 +74,7 @@
 							{
 								@touch("./.uploads/" . $id . "/" . session_id() . ".session");
 								@touch("./.uploads/" . $id . "/" . $_SERVER['REMOTE_ADDR'] . ".ip");
-								echo('<a href="http://' . $_SERVER[HTTP_HOST] . '/' . $id . '">' . $filestring . '</a>');
+								echo('<a href="' . $_SERVER[HTTP_REFERER] . '' . $id . '">' . $filestring . '</a>');
 								exit;
 							}
 							else

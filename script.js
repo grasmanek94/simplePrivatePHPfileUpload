@@ -52,7 +52,7 @@ function onready() {
 			links.scrollTop = links.scrollHeight;
 		}, false);
 
-		xhr.open("POST", "/upload.php", true);
+		xhr.open("POST", "upload.php", true);
 		
 		// Set appropriate headers
 		//xhr.setRequestHeader("Content-Type", "multipart/form-data");

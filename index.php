@@ -15,6 +15,6 @@
   }
   else
   {
-    echo('<html><head><meta charset="utf-8"/><title>Upload</title></head><body><form name="login" action="/" method="POST"><div align="center"><input id="password" name="password" type="password" style="width=100%"></div></form></body></html>');  
+    echo('<html><head><meta charset="utf-8"/><title>Upload</title></head><body><form name="login" action="" method="POST"><div align="center"><input id="password" name="password" type="password" style="width=100%"></div></form></body></html>');  
   }
 ?>
